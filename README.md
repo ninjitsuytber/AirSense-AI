@@ -1,6 +1,6 @@
 # AirSense AI
 
-AirSense AI is a web-based, interactive terminal interface designed for analyzing air quality data. It leverages Google Gemini AI for intelligent data interpretation, Matplotlib for visualization, and NewsAPI for real-time environmental context.
+AirSense AI is a next-generation environmental analysis platform powered by the **Google Agent Development Kit (ADK)** and Gemini 2.5 Flash. It utilizes a sophisticated agentic workflow to interpret air quality data, fetch real-time context via modular tools, and provide actionable health insights through an interactive terminal.
 
 ## System Architecture
 
@@ -29,6 +29,15 @@ graph TD
         NewsTool -.->|HTTP| NewsAPI[NewsAPI.org]
     end
 ```
+
+## Google ADK & Agentic Architecture
+
+This project is built from the ground up to showcase the power of the **Google AI Python ADK**. The core architecture centers on an autonomous agentic loop:
+
+- **Agentic Loop**: Built using the `google-genai` SDK, our agents perform multi-step reasoning (ReAct pattern) to validate, analyze, and predict air quality trends.
+- **Thinking Logs**: Every AI response includes a `<think>` block, exposing the internal reasoning trace of the Google ADK agents for full transparency.
+- **Modular Tools**: We've implemented a tool-calling pattern compatible with the ADK framework, abstracting external services like NewsAPI into dedicated modules in `/tools`.
+- **System Robustness**: Leverages the ADK's safety guardrails and system instructions to ensure professional, accurate environmental reporting.
 
 ## Agent Profiles
 
