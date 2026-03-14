@@ -25,7 +25,7 @@
       end
 
       subgraph ExternalProvider ["External APIs / Infrastructure"]
-         Verifier & Expert -.->|Google AI Python SDK| Gemini[Gemini 2.5 Flash]
+         Verifier & Expert -.->|Google AI Python ADK| Gemini[Gemini 2.5 Flash]
          NewsTool -.->|HTTP requests| NewsAPI[NewsAPI.org]
          Server -.->|Matplotlib / Pandas| Visuals[Data Processing Layer]
       end
