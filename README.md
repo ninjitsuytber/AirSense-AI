@@ -11,7 +11,7 @@
       end
 
       subgraph BackendSpace ["Analysis Agents: /agents"]
-         App <-->|POST /api/analyze| Server[Flask Server: server.py]
+         App <-->|POST /api/analyze| Server[Google Cloud Run: server.py]
          
          subgraph AgentCore ["Agentic Reasoning"]
                Server --> Verifier[Relevancy Verifier Agent]
@@ -25,7 +25,7 @@
       end
 
       subgraph ExternalProvider ["External APIs / Infrastructure"]
-         Verifier & Expert -.->|Google AI Python ADK| Gemini[Gemini 2.5 Flash]
+         Verifier & Expert -.->|Google AI Python SDK| Gemini[Gemini 2.5 Flash]
          NewsTool -.->|HTTP requests| NewsAPI[NewsAPI.org]
          Server -.->|Matplotlib / Pandas| Visuals[Data Processing Layer]
       end
@@ -106,10 +106,7 @@
 - Real-time News: Pulls relevant air quality news to provide context for the analyzed data.
 - API Key Persistence: Securely saves the user's API key in local storage and includes error handling for exhausted or invalid keys.
 - Mobile Responsive: Optimized for mobile viewing
-
-## Limitations
-
-- **Free Tier Constraints**: Since the backend is currently hosted on the free Render tier, it can only handle lightweight CSV files. Large datasets may cause timeouts or performance issues.
+- **High Performance**: Hosted on **Google Cloud Run**, the backend scales horizontally and provides low-latency analysis without the cold-start delays of common free-tier providers.
 
 ## Deployment Guide
 
@@ -119,10 +116,10 @@
    2. The `netlify.toml` automatically sets the build folder to `/app`.
    3. Set your Production Backend URL in `app/script.js`.
 
-### Backend Deployment (Render / Cloud Run)
+### Backend Deployment (Google Cloud Run)
 
-   1. Deploy the contents of the project to a platform that supports Python (like Render.com).
-   2. Set the Start Command to: `gunicorn agents.server:app`
+   1. The backend is deployed to **Google Cloud Run** using a custom Dockerfile.
+   2. It utilizes **Artifact Registry** for container storage and **Cloud Build** for automated deployments.
    3. Ensure all environment variables and dependencies in `requirements.txt` are satisfied.
 
 ## Troubleshooting
