@@ -1,4 +1,5 @@
 # AirSense AI
+<img width="1609" height="615" alt="image" src="https://github.com/user-attachments/assets/b9970d6a-412d-445a-b15d-c57169a210d8" />
 
    AirSense AI is a next-generation environmental analysis platform powered by the **Google Agent Development Kit (ADK)** and Gemini 2.5 Flash. It utilizes a sophisticated agentic workflow to interpret air quality data, fetch real-time context via modular tools, and provide actionable health insights through an interactive terminal.
 
